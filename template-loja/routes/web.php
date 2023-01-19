@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SistemaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,11 @@ Route::get('detalhes', function () {
 Route::get('jogos', function () {
     return view('browse');
 });
+
+
+Route::get('/addJogos', function() {
+    return view('addJogos');
+});
+
+Route::post('/user', [SistemaController::class, 'index']);
+Route::get('/pesquisa', [SistemaController::class, 'listar']);
