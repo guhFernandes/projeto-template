@@ -35,9 +35,11 @@ Route::get('jogos', function () {
 });
 
 
-Route::get('/addJogos', function() {
-    return view('addJogos');
+Route::get('/add/jogos', function() {
+    return view('resource',['x'=>'cad']);
 });
-
-Route::post('/user', [SistemaController::class, 'index']);
-Route::get('/pesquisa', [SistemaController::class, 'listar']);
+Route::post('/add/jogos', [SistemaController::class, 'storead']);
+Route::get('/listar/jogos', [SistemaController::class, 'listar']);
+Route::post('/editar/jogos', [SistemaController::class, 'editar']);
+Route::post('/update', [SistemaController::class, 'update']);
+Route::post('/delete/jogos', [SistemaController::class, 'delete']);

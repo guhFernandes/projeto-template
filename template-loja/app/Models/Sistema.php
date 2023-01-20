@@ -10,20 +10,39 @@ class Sistema extends Model
 {
     use HasFactory;
 
-    public function getAll()
+    public function getAllJogos()
     {
         $db = DB::table('biblioteca_jogos')->get();
         return $db;
     }
 
-    public function addJogos($name, $descricao, $value)
+    public function addJogos($nome, $descricao, $value)
     {
         DB::table('biblioteca_jogos')->insert([
-            'nome'=> $name,
+            'nome'=> $nome,
             'descricao'=> $descricao,
             'valor'=> $value
         ]);
     }
 
+    public function delJogos($id)
+    {
+        DB::table('biblioteca_jogos')->where('id','=', $id)->delete();
+    }
+
+    public function updateJogos($id,$nome,$descricao,$value)
+    {
+        DB::table('biblioteca_jogos')->where('id','=', $id)->update([
+            'nome'=> $nome,
+            'descricao'=> $descricao,
+            'valor'=> $value
+        ]);
+    }
+
+    public function getJogos($id)
+    {
+        $return = DB::table('biblioteca_jogos')->where('id','=', $id)->get();
+        return $return;
+    }
 
 }
