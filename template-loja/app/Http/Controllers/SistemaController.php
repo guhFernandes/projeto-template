@@ -16,8 +16,8 @@ class SistemaController extends Controller
     {
         $objeto = new Sistema;
         $objeto->addJogos($request->nome, $request->descricao, $request->valor);
-        $r = $objeto->getAllJogos();
-        return view('resource', ['x'=> 'get', 'mensagem'=>'cadastrado com sucesso', 'result'=> $r]);
+        $jogos = $objeto->getAllJogos();
+        return view('resource', ['x'=> 'get', 'mensagem'=>'cadastrado com sucesso', 'result'=> $jogos]);
     }
     
     public function listar()
@@ -30,25 +30,25 @@ class SistemaController extends Controller
     public function editar(Request $request)
     {
         $db = new Sistema;
-        $r = $db->getJogos($request->id);
-        return view('resource', ['x'=>'upd', 'result'=> $r]);
+        $jogos = $db->getJogos($request->id);
+        return view('resource', ['x'=>'upd', 'result'=> $jogos]);
     }
 
     public function delete(Request $request)
     {
         $db = new Sistema;
         $db->delJogos($request->id);
-        $r = $db->getAllJogos();
+        $jogos = $db->getAllJogos();
         $msg = "Deletado com sucesso";
-        return view('resource', ['x'=>'get','mensagem'=> $msg, 'result' => $r]);
+        return view('resource', ['x'=>'get','mensagem'=> $msg, 'result' => $jogos]);
     }
 
     public function update(Request $request)
     {
         $db = new Sistema;
         $db->updateJogos($request->id, $request->nome, $request->descricao, $request->valor);
-        $a = $db->getAllJogos();
-        return view('resource', ['x'=>'get','mensagem'=> "Update com sucesso", 'result' => $a]);
+        $jogos = $db->getAllJogos();
+        return view('resource', ['x'=>'get','mensagem'=> "Update com sucesso", 'result' => $jogos]);
     }
 
 }
