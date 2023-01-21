@@ -9,14 +9,7 @@ use Laravel\SerializableClosure\Serializers\Signed;
 class SistemaController extends Controller
 {
 
-    public function index(Request $request)
-    {
-        $name = $request->name;
-        $descricao = $request->descricao;
-        $value = $request->value;
-        $objeto = new Sistema;
-        $objeto->addJogos($name, $descricao, $value);
-    }
+  
 
 
     public function storead(Request $request)
